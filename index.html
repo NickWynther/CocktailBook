@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cocktail book: VUE.JS + Rest API</title>
+    <!-- Import Vue.js -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    
+  </head>
+  <body>
+    
+    <div id="container">
+      <div id="app">
+        <h1>Coctail book</h1>
+        <input v-model="queryText" placeholder="ex. Old Fashioned , Margarita etc.">
+        <button  @click="fetchFromApi" >Search</button>
+        <button  @click="fetchRandomFromApi" >Random</button>
+
+        <drink-display v-for="drink in drinks" :drink="drink" ></drink-display>
+        <p class="error-message" v-if="noResults">There are no results for '{{incorrectQueryText}}'.</p>
+      </div>
+
+      <footer>
+        <p>Author: Nikita Kuznecovs
+        <a href="https://www.thecocktaildb.com/api.php">Used API</a></p>
+      </footer>
+  </div>
+    <!-- Import App -->
+    <script src="./main.js"></script>
+     <!-- Import Components -->
+     <script src="./components/DrinkDisplay.js"></script>
+     <script src="./components/AttributeDisplay.js"></script>
+     <!--Mount App-->
+    <script>
+        const mountedApp = app.mount('#app')
+    </script>
+  </body>
+</html>
